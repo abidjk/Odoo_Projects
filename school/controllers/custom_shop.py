@@ -34,6 +34,7 @@ class WebsiteSaleInherit(WebsiteSale):
         for rec in product_template_object:
             x[rec.id] = {'price_reduce': rec.list_price}
         res.qcontext['products_prices'] = x
+        print('p')
 
         # categories
         if res.qcontext['category']:
