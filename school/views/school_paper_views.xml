@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="school_paper_list_view" model="ir.ui.view">
+        <field name="name">school.paper.list.view</field>
+        <field name="model">school.paper</field>
+        <field name="arch" type="xml">
+            <list string="paper list" editable="bottom">
+                <field name="name"/>
+                <field name="pass_mark"/>
+                <field name="max_mark"/>
+            </list>
+        </field>
+    </record>
+    <record id="school_paper_form_view" model="ir.ui.view">
+        <field name="name">school.paper.form.view</field>
+        <field name="model">school.paper</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="pass_mark"/>
+                        <field name="max_mark"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

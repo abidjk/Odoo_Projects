@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="student_thanks" name="Thanks Student">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <h1>Thanks!</h1>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="alert alert-success" role="status">
+                            <t t-esc="admission_no"/>
+                            has been successfully created.
+                        </div>
+                        <div class="alert alert-success" role="status">
+                            <a href="/student-list">See the students</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

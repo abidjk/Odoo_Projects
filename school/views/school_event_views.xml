@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="school_event_list_view" model="ir.ui.view">
+        <field name="name">school.event.view</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <list string="event list">
+                <field name="name"/>
+                <field name="club_id"/>
+                <field name="event_status"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </list>
+        </field>
+    </record>
+    <record id="school_event_form_view" model="ir.ui.view">
+        <field name="name">school.event.form.view</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <header>
+                    <field name="event_status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="club_id"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="event_image" widget="image" class="oe_avatar"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="school_event_search_view" model="ir.ui.view">
+        <field name="name">school.event.search.view</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <search string="Tests">
+                <field name="name"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="school_event_action" model="ir.actions.act_window">
+        <field name="name">Event</field>
+        <field name="res_model">school.event</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

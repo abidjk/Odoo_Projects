@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="school_exam_list_view" model="ir.ui.view">
+        <field name="name">school.exam.view</field>
+        <field name="model">school.exam</field>
+        <field name="arch" type="xml">
+            <list string="Exam list">
+                <field name="name"/>
+                <field name="class_id"/>
+                <field name="paper_ids"/>
+                <field name="exam_status"/>
+            </list>
+        </field>
+    </record>
+    <record id="school_exam_form_view" model="ir.ui.view">
+        <field name="name">school.exam.form.view</field>
+        <field name="model">school.exam</field>
+        <field name="arch" type="xml">
+            <form string="form_view" create="false">
+                <header>
+                    <button name="action_add_exams" class="oe_highlight" string="Add Exams" type="object"
+                            invisible="exam_assigned"/>
+                    <button name="action_add_exams_to_new_studs" class="oe_highlight" string="To new students "
+                            type="object" invisible="exam_assigned == False"/>
+                    <field name="exam_status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="class_id"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Papers">
+                            <group>
+                                <field name="paper_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="school_exam_action" model="ir.actions.act_window">
+        <field name="name">Exam</field>
+        <field name="res_model">school.exam</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

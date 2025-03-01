@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_revenue_wise_list_view" model="ir.ui.view">
+        <field name="name">crm.revenue.wise</field>
+        <field name="model">revenue.wise</field>
+        <field name="arch" type="xml">
+            <list string="Revenue Wise list" editable="bottom">
+                <field name="sequence"/>
+                <field name="from_amount" invisible="revenue_wise_type == 'straight'"/>
+                <field name="to_amount" invisible="revenue_wise_type == 'straight'"/>
+                <field name="rate" widget="percentage"/>
+            </list>
+        </field>
+    </record>
+    <record id="crm_revenue_wise_action" model="ir.actions.act_window">
+        <field name="name">Revenue Wise Commission</field>
+        <field name="res_model">revenue.wise</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

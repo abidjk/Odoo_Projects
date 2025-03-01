@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'School Management',
+    'version': '18.0.1.0.0',
+    'application': True,
+    'depends': [
+        'hr', 'base', 'sale', 'website', 'website_sale'
+    ],
+    'author': 'Abid',
+    'category': 'Education',
+    'summery': 'School Management',
+    'data': [
+        'security/groups.xml',
+        'security/ir.model.access.csv',
+        'security/school_security.xml',
+        'wizard/leave_report_wizard_views.xml',
+        'wizard/student_report_wizard_views.xml',
+        'views/website_student_form.xml',
+        'views/website_leave_form.xml',
+        'views/website_event_form.xml',
+        'views/website_student_list.xml',
+        'views/website_student_thankyou.xml',
+        'views/website_leave_thankyou.xml',
+        'views/website_event_thankyou.xml',
+        'views/website_snippet_selected_event_views.xml',
+        'views/snippet.xml',
+        'views/school_department_views.xml',
+        'views/school_class_views.xml',
+        'views/school_subject_views.xml',
+        'views/school_academic_views.xml',
+        'views/school_students_views.xml',
+        'views/school_club_views.xml',
+        'views/school_event_views.xml',
+        'views/sale_order_views.xml',
+        'views/school_teacher_views.xml',
+        'views/school_office_staff_views.xml',
+        'views/school_leave_views.xml',
+        'views/school_exam_views.xml',
+        'views/school_paper_views.xml',
+        'views/product_template_views.xml',
+        'views/auto_sale_order_views.xml',
+        # 'views/res_partner_views.xml',
+        'report/school_report.xml',
+        'report/leave_report_template.xml',
+        'report/student_report_template.xml',
+        'data/base_automation.xml',
+        'data/school_event_email_template.xml',
+        'data/ir_cron_data.xml',
+        'data/ir_sequence_data.xml',
+        'views/school_menu.xml',
+    ],
+    'assets': {
+        'web.assets_backend': [
+            'school/static/src/js/school_xlsx_report.js',
+        ],
+        'web.assets_frontend': [
+            'school/static/src/js/school_website.js',
+            'school/static/src/js/school_events_snippet.js',
+            'school/static/src/xml/home_templates.xml',
+        ]
+    }
+}

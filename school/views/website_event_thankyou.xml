@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="event_thanks" name="Thanks Event">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <h2 align="center">Events</h2>
+                    <div class="container"
+                         style="padding-left:50px;padding-right:50px display: flex;column-gap: 20px;justify-content: space-between;">
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

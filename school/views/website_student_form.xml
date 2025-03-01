@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="create_student" name="Create Student">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <h2 align="center">Students</h2>
+                    <div class="container"
+                         style="padding-left:50px;padding-right:50px display: flex;column-gap: 20px;justify-content: space-between;">
+                        <form role="form" action="/create-student" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div style="float:left;padding-left:50px">
+                                <div class="form-group">
+                                    <div style="margin-bottom: 15px">
+                                        <label for="first_name" class="control-label">First Name</label>
+                                        <input type="text" name="first_name" t-att-value="first_name" id="first_name"
+                                               class="form-control" placeholder="eg. Abid" required="required"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="last_name" class="control-label">Last Name</label>
+                                        <input type="text" name="last_name" t-att-value="last_name" id="last_name"
+                                               class="form-control" placeholder="eg. Jumail"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="father" class="control-label">Father</label>
+                                        <input type="text" name="father" t-att-value="father" id="father"
+                                               class="form-control" style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="mother" class="control-label">Mother</label>
+                                        <input type="text" name="mother" t-att-value="mother" id="mother"
+                                               class="form-control" style="width: 432px; height: 35px;"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div style="margin-bottom: 15px">
+                                        <label for="email" class="control-label">Email</label>
+                                        <input type="email" name="email" t-att-value="email" id="email"
+                                               class="form-control"
+                                               placeholder="eg.abid@gmail.com" required="required"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="phone" class="control-label">Phone</label>
+                                        <input type="phone" name="phone" t-att-value="phone" id="phone"
+                                               class="form-control"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                </div><br/>
+                                <div style="float:right;margin-bottom: 15px">
+                                    <button type="submit" class="btn btn-primary pull-left" id="student_submit">Create
+                                        Student
+                                    </button>
+                                </div>
+                            </div>
+                            <div style="float:right;padding-right:50px">
+                                <div class="form-group">
+                                    <div style="margin-bottom: 15px">
+                                        <label for="class_id" class="control-label">Class</label>
+                                        <select id="class_id" name="class_id" required="True" class="form-control"
+                                                style="width: 432px; height: 35px;">
+                                            <option value="">Select Class</option>
+                                            <t t-foreach="classes" t-as="class">
+                                                <option t-att-value="class.id" t-esc="class.name"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div style="margin-bottom: 15px">
+                                        <label for="clubs" class="control-label">Clubs :</label>
+                                        <select multiple="multiple" id="club_ids" class="form-control"
+                                                style="width: 432px; height: 70px;">
+                                            <option value="">None</option>
+                                            <t t-foreach="clubs" t-as="club">
+                                                <option t-att-value="club.id" t-esc="club.name"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <input type="hidden" id="selected_club_ids" name="club_ids"/>
+                                </div>
+                                <div class="form-group">
+                                    <div style="margin-bottom: 15px">
+                                        <label for="aadhar_no" class="control-label">Aadhar</label>
+                                        <input type="number" name="aadhar_no" t-att-value="aadhar_no" id="aadhar_no"
+                                               class="form-control"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="dob" class="control-label">Date of Birth</label>
+                                        <input type="date" name="dob" t-att-value="dob" id="dob" required="required"
+                                               class="form-control"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="age" class="control-label">Age</label>
+                                        <input type="text" name="age" t-att-value="age" readonly="True" id="age"
+                                               class="form-control"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="gender" class="control-label">Gender</label>
+                                        <select id="gender" name="gender" class="form-control"
+                                                style="width: 432px; height: 35px;">
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div style="margin-bottom: 15px">
+                                        <label for="tc" class="control-label">TC</label>
+                                        <input type="file" name="tc" accept="application/pdf"
+                                               style="width: 432px; height: 35px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

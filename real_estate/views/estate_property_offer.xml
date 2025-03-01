@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="property_offer_list_view" model="ir.ui.view">
+                <field name="name">estate.properties.view</field>
+                <field name="model">estate.property.offer</field>
+                <field name="arch" type="xml">
+                    <list string="Tests" multi_edit="1" >
+                        <field name="price"/>
+                        <field name="status"/>
+                        <field name="property_id"/>
+                        <field name="partner_id"/>
+                        <button name="offer_accepted" type="object" icon="fa-check"/>
+                        <button name="offer_refused" type="object" icon="fa-times"/>
+                        <button name="offer_none" type="object" icon="fa-undo"/>
+                        <field name="deadline"/>
+                        <field name="validity"/>
+                    </list>
+                </field>
+    </record>
+    <record id="property_offer_form_view" model="ir.ui.view">
+                <field name="name">estate.properties.view</field>
+                <field name="model">estate.property.offer</field>
+                <field name="arch" type="xml">
+                    <form string="form_view">
+                     <sheet>
+                        <group>
+                            <group>
+                                <field name="price"/>
+                            </group>
+                            <group>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="property_id"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                            <group>
+                                <field name="deadline"/>
+                            </group>
+                            <group>
+                                <field name="validity"/>
+                            </group>
+                        </group>
+                     </sheet>
+                    </form>
+                </field>
+    </record>
+
+</odoo>

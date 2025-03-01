@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Template for displaying the school events -->
+<templates id="school_events_template" xml:space="preserve">
+   <t t-name="school.school_events_snippet_view">
+       <div class="container">
+                <div t-attf-id="{{slide_id}}" class="carousel slide" data-bs-interval="5000" data-bs-ride="true">
+                    <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                       <t t-foreach="chunkData" t-as="data" t-key="data_index">
+                           <div t-att-class="'is_active' ? 'carousel-item active':'carousel-item'" style="min-height: 368.375px;" role="option">
+                               <t t-foreach="data" t-as="vals" t-key="vals_index">
+                                   <div class="card mb-4 bg-light" style="width: 300px;height:280px; float:left;margin-right:5px;margin-left:5px;">
+                                       <a class="o_dynamic_product_hovered stretched-link" t-attf-href="/event-form/{{vals.id}}">
+                                           <div class="row no-gutters">
+                                               <div class="col-md-12">
+                                                   <div class="card-body bg-light">
+                                                       <h5 class="card-title"><t t-esc="vals.name"/></h5>
+                                                       <p class="card-text"><t t-esc="vals.description"/></p>
+                                                       <p class="card-text">Club : <t t-esc="vals.club_id[1]"/></p>
+                                                       <p class="card-text"><small class="text-muted">Start Date:<t t-esc="vals.start_date"/></small></p>
+                                                       <p class="card-text"><small class="text-muted">End Date:<t t-esc="vals.end_date"/></small></p>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </a>
+                                   </div>
+                               </t>
+                           </div>
+                       </t>
+                    </div>
+                    <a class="carousel-control-prev" t-att-href="'#' + slide_id" role="button"  data-bs-slide="prev">
+                        <span class="oi oi-chevron-left ms-md-n4 rounded-pill p-3 bg-700" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" t-att-href="'#' + slide_id"  role="button"  data-bs-slide="next">
+                        <span class="oi oi-chevron-right ms-md-n4 rounded-pill p-3 bg-700" aria-hidden="true"></span>
+                    </a>
+                </div>
+       </div>
+   </t>
+</templates>

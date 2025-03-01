@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="selected_event" name="Selected Event">
+        <t t-call="website.layout">
+            <div class="container">
+                <h2 style="text-align:center;font-style:italic"><t t-esc="selected_event.name"/> </h2>
+                <div class="card bg-light" style="align-items:center;">
+                    <img  class="card-img-top o_img_product_square o_img_product_cover h-auto" alt="Coudn't find images" t-attf-src="data:image/jpeg;base64,{{selected_event.event_image}}" style="width:300px;height:300px"/>
+                    <div class="card-body bg-light">
+                        <h5 class="card-title">Club: <t t-esc="selected_event.club_id.name"/></h5>
+                        <p class="card-text">Description: <t t-esc="selected_event.description"/>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Start Date: <t t-esc="selected_event.start_date"/></small>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">End Date: <t t-esc="selected_event.end_date"/></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

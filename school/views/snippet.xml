@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="school_events_base_template" name="School Events">
+        <!--        Template School Events dynamic snippet-->
+        <section class="school_events_snippet">
+           <div class="ref-arrival-content">
+               <h2 style="text-align:center;font-style:italic">Top Events</h2>
+            </div>
+            <div id="top_products_carousel"/>
+        </section>
+    </template>
+    <template id="basic_snippet" inherit_id="website.snippets" name="School Events Snippet">
+        <xpath expr="//t[@id='installed_snippets_hook']">
+            <t t-snippet="school.school_events_base_template" t-thumbnail="/school/static/src/img/icon.svg"/>
+        </xpath>
+    </template>
+</odoo>

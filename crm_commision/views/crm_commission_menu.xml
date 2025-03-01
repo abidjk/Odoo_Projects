@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="crm_commission_root_menu" name="CRM Commission"/>
+    <menuitem id="crm_commission_menu" name="CRM Commission" action="crm_commission_action" parent="crm_commission_root_menu" sequence="1"/>
+    <menuitem id="crm_product_wise_menu" name="Product Wise" action="crm_product_wise_action" parent="crm_commission_root_menu" sequence="2"/>
+    <menuitem id="crm_revenue_wise_menu" name="Revenue Wise" action="crm_revenue_wise_action" parent="crm_commission_root_menu" sequence="3"/>
+</odoo>

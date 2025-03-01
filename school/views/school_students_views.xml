@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="school_students_list_view" model="ir.ui.view">
+        <field name="name">school.students.view</field>
+        <field name="model">school.students</field>
+        <field name="arch" type="xml">
+            <list string="Students List">
+                <field name="sequence"/>
+                <field name="first_name"/>
+                <field name="class_id"/>
+                <field name="prev_academic_dept"/>
+                <field name="status"/>
+                <field name="last_name" optional="hide"/>
+                <field name="tc" optional="hide"/>
+                <field name="aadhar_no" optional="hide"/>
+            </list>
+        </field>
+    </record>
+    <record id="school_reg_students_list_view" model="ir.ui.view">
+        <field name="name">school.reg.students.view</field>
+        <field name="model">school.students</field>
+        <field name="arch" type="xml">
+            <list string="Students List" create="false" decoration-success="attendance == 'present'"
+                  decoration-danger="attendance == 'absent'">
+                <field name="admission_no"/>
+                <field name="first_name"/>
+                <field name="class_id"/>
+                <field name="prev_academic_dept"/>
+                <field name="status"/>
+                <field name="last_name" optional="hide"/>
+                <field name="tc" optional="hide"/>
+                <field name="aadhar_no" optional="hide"/>
+            </list>
+        </field>
+    </record>
+    <record id="school_students_form_view" model="ir.ui.view">
+        <field name="name">school.students.form.view</field>
+        <field name="model">school.students</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <header>
+                    <button name="action_registration_state" class="oe_highlight" string="Register" type="object"
+                            invisible="status == 'registration'"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <header>
+                        <h1>
+                            <field name="sequence"/>
+                        </h1>
+                    </header>
+                    <field name="photo" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="father"/>
+                            <field name="mother"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="class_id"/>
+                            <field name="club_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="reg_date"/>
+                            <field name="tc" widget="many2many_binary"/>
+                            <field name="aadhar_no"/>
+                            <field name="school_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Address">
+                            <group>
+                                <field name="comm_address"/>
+                                <field name="same_as_comm"/>
+                                <field name="perm_address" invisible="same_as_comm"/>
+                            </group>
+                        </page>
+                        <page string="Previous">
+                            <group>
+                                <field name="prev_academic_dept"/>
+                                <field name="prev_class"/>
+                                <field name="prev_school_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="school_reg_students_form_view" model="ir.ui.view">
+        <field name="name">school.reg.students.form.view</field>
+        <field name="model">school.students</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <header>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <header>
+                        <h1>
+                            <field name="admission_no"/>
+                        </h1>
+                    </header>
+                    <field name="photo" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="attendance"/>
+                            <field name="sequence"/>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="father"/>
+                            <field name="mother"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="class_id"/>
+                            <field name="club_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="reg_date"/>
+                            <field name="aadhar_no"/>
+                            <field name="school_id"/>
+                            <field name="tc" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Exams">
+                            <group>
+                                <field name="exam_ids" nolabel="1" readonly="True">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="name"/>
+                                                    <field name="class_id"/>
+                                                </group>
+                                                <group>
+                                                    <field name="start_date"/>
+                                                    <field name="end_date"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page string="Papers">
+                                                    <group>
+                                                        <field name="paper_ids" nolabel="1"/>
+                                                    </group>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="school_students_search_view" model="ir.ui.view">
+        <field name="name">school.students.search.view</field>
+        <field name="model">school.students</field>
+        <field name="arch" type="xml">
+            <search string="Tests">
+                <field name="prev_academic_dept"/>
+                <field name="prev_class"/>
+                <filter name="status" domain="[('status', '=', 'draft')]"/>
+                <group expand="0">
+                    <filter name="prev_academic_dept" domain="[]" context="{'group_by':'prev_academic_dept'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="school_students_action" model="ir.actions.act_window">
+        <field name="name">Registration</field>
+        <field name="res_model">school.students</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="view_ids" eval="[Command.clear(),
+                Command.create({'view_mode': 'list', 'view_id': ref('school_students_list_view')}),
+                Command.create({'view_mode': 'form', 'view_id': ref('school_students_form_view')})]"/>
+    </record>
+    <record id="school_reg_students_action" model="ir.actions.act_window">
+        <field name="name">Students Admission</field>
+        <field name="res_model">school.students</field>
+        <field name="domain">[('status','=','registration')]</field>
+        <field name="view_ids" eval="[Command.clear(),
+                Command.create({'view_mode': 'list', 'view_id': ref('school_reg_students_list_view')}),
+                Command.create({'view_mode': 'form', 'view_id': ref('school_reg_students_form_view')})]"/>
+        <field name="context">{'create' : False, 'tree_view_ref':'school_reg_students_list_view',
+            'form_view_ref':'school_reg_students_form_view'}
+        </field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

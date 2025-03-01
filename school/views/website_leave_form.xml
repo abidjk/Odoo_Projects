@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="create_leave" name="Create Leave">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <h2 align="center">Leaves</h2>
+                    <div class="container">
+                        <form role="form" action="/create-leave" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <div class="col-md-5 col-sm-8">
+                                    <label for="student_id" class="control-label">Student</label>
+                                    <select id="student_id" name="student_id" required="True" class="form-control"
+                                            style="width: 432px; height: 35px;">
+                                        <option value="">Select Student</option>
+                                        <t t-foreach="students" t-as="student">
+                                            <option t-att-value="student.id" t-esc="student.first_name"/>
+                                        </t>
+                                    </select>
+                                    <label for="class_name" class="control-label">Class</label>
+                                    <input type="text" id="class_name"
+                                           class="form-control"
+                                           style="width: 432px; height: 35px;" readonly="True"/>
+                                    <input type="hidden" name="class_id" id="class_id"
+                                           class="form-control"
+                                           style="width: 432px; height: 35px;"/>
+                                    <label for="start_date" class="control-label">Start Date</label>
+                                    <input type="date" name="start_date" t-att-value="start_date" id="start_date"
+                                           class="form-control" required="True"
+                                           style="width: 432px; height: 35px;"/>
+                                    <label for="end_date" class="control-label">End Date</label>
+                                    <input type="date" name="end_date" t-att-value="end_date" id="end_date"
+                                           class="form-control" required="True"
+                                           style="width: 432px; height: 35px;"/>
+                                    <label for="total_days" class="control-label">Days</label>
+                                    <input type="text" name="total_days" t-att-value="total_days" id="total_days"
+                                           class="form-control"
+                                           style="width: 432px; height: 35px;"/>
+                                    <label for="reason" class="control-label">Reason</label>
+                                    <input type="text" name="reason" id="reason"
+                                           class="form-control" required="True"
+                                           style="width: 432px; height: 35px;"/>
+                                    <br></br>
+                                    <div class="clearfix oe_login_buttons">
+                                        <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <record id="menu_leave_form" model="website.menu">
+        <field name="name">Create Leave</field>
+        <field name="url">/leave-form</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">71</field>
+    </record>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_event_form" model="website.menu">
+        <field name="name">Create Event</field>
+        <field name="url">/event-form</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">72</field>
+    </record>
+    <template id="create_event" name="Create Event">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <h2 align="center">Events</h2>
+                    <div class="container">
+                        <form role="form" action="/create-event" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <div class="col-md-5 col-sm-8">
+                                    <label for="name" class="control-label">Name</label>
+                                    <input type="text" id="class_name"
+                                           class="form-control" name="name" required="True"
+                                           style="width: 432px; height: 35px;"/>
+                                    <label for="club" class="control-label">Club</label>
+                                    <select id="club_id" name="club_id" required="True" class="form-control"
+                                            style="width: 432px; height: 35px;">
+                                        <option value="">Select Club</option>
+                                        <t t-foreach="clubs" t-as="club">
+                                            <option t-att-value="club.id" t-esc="club.name"/>
+                                        </t>
+                                    </select>
+                                    <label for="start_date" class="control-label">Start Date</label>
+                                    <input type="date" name="start_date" t-att-value="start_date" id="start_date"
+                                           class="form-control" required="True"
+                                           style="width: 432px; height: 35px;"/>
+                                    <label for="end_date" class="control-label">End Date</label>
+                                    <input type="date" name="end_date" t-att-value="end_date" id="end_date"
+                                           class="form-control" required="True"
+                                           style="width: 432px; height: 35px;"/><br></br>
+                                    <label for="description" class="control-label">Description</label>
+                                    <input type="text" name="description" t-att-value="description" id="description"
+                                           class="form-control"
+                                           style="width: 432px; height: 35px;"/><br></br>
+                                    <div class="clearfix oe_login_buttons">
+                                        <button type="submit" class="btn btn-primary pull-left">Create</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

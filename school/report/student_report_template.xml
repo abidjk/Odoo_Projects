@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_student">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h1>
+                            <t t-if="data_len == 1">
+                                <t t-if="report_type == 'class'">
+                                   Student Report: Class
+                                </t>
+                                <t t-esc="list(report.keys())[0]"/>
+                            </t>
+                        </h1>
+                        <h1>
+                            <t t-if="data_len > 1">Student Report</t>
+                        </h1>
+                    </div>
+                    <t t-foreach="data" t-as="line">
+                        <h2>
+                            <t t-if="data_len > 1">
+                                <t t-if="report_type == 'class' or not report_type">Class</t>
+                                <t t-esc="line"/>
+                            </t>
+                        </h2>
+                        <table class="table table-bordered mt32">
+                            <thead>
+                                <tr>
+                                    <th name="th_students" class="text-left">
+                                        <span>Students</span>
+                                    </th>
+                                    <th name="th_admn_no" class="text-left">
+                                        <span>Admission NO</span>
+                                    </th>
+                                    <th name="th_class" class="text-left" t-if="report_type == 'department' or report_type == 'club'">
+                                        <span>Class</span>
+                                    </th>
+                                    <th name="th_department" class="text-left" t-if="report_type!='department'">
+                                        <span>Department</span>
+                                    </th>
+                                    <th name="th_email" class="text-left">
+                                        <span>Email</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="data[line]" t-as="student">
+                                <tr>
+                                    <td>
+                                        <span t-esc="student['first_name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="student['admission_no']"/>
+                                    </td>
+                                    <td t-if="report_type == 'department' or report_type == 'club'">
+                                        <span t-esc="student['class_name']"/>
+                                    </td>
+                                    <td t-if="report_type!='department'">
+                                        <span t-esc="student['department_name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="student['email']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

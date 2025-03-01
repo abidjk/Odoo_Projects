@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="product_details_pos_order_line" xml:space="preserve">
+    <t t-name="product_details.posOrderLine"
+       t-inherit="point_of_sale.Orderline"
+       t-inherit-mode="extension">
+     <xpath expr="//t[@t-esc='line.unit']" position="after">
+<!--         <t t-log="line"/>-->
+         <t t-if="line.description and line.description != ''">
+         <div class="fw-bolder gap-1">
+            <span>Description:</span>
+             <span t-esc="line.description"/>
+         </div>
+         </t>
+        </xpath>
+        <xpath expr="//t[@t-esc='line.price']" position="after">
+         <button type="button" class="close bg-danger" aria-label="Close" t-on-click="() => this.onClickRemove()">
+            <span aria-hidden="true">X</span>
+        </button>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Server Action on register student done -->
+    <record id="action_create_user_on_register_student" model="ir.actions.server">
+        <field name="name">Create user on register student</field>
+        <field name="model_id" ref="school.model_school_students"/>
+        <field name="state">code</field>
+        <field name="code">record.action_create_user()</field>
+    </record>
+    <!-- Server Action on register partner done -->
+    <record id="action_create_user_on_register_partner" model="ir.actions.server">
+        <field name="name">Create user on register partner</field>
+        <field name="model_id" ref="school.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">record.action_create_user_on_partner()</field>
+    </record>
+    <!-- Automated Action to create user on creating student -->
+    <record id="automated_action_create_user_on_register_student" model="base.automation">
+        <field name="name">Create user on register student</field>
+        <field name="model_id" ref="school.model_school_students"/>
+        <field name="trigger">on_create_or_write</field>
+        <field name="action_server_ids" eval="[Command.link(ref('action_create_user_on_register_student'))]"/>
+        <field name="trigger_field_ids" eval="[Command.link(ref('school.field_school_students__admission_no'))]"/>
+    </record>
+    <!-- Automated Action to create user on creating partner -->
+    <record id="automated_action_create_user_on_register_partner" model="base.automation">
+        <field name="name">Create user on register partner</field>
+        <field name="model_id" ref="school.model_res_partner"/>
+        <field name="trigger">on_create</field>
+        <field name="action_server_ids" eval="[Command.link(ref('action_create_user_on_register_partner'))]"/>
+    </record>
+</odoo>

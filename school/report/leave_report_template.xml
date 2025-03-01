@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_leave">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h1>
+                            <t t-if="data_len == 1">
+                                <t t-if="applied_on=='class'">
+                                   Leave Report: Class
+                                </t>
+                                <t t-esc="list(report.keys())[0]"/>
+                            </t>
+                        </h1>
+                        <h1>
+                            <t t-if="data_len > 1">Leave Report</t>
+                        </h1>
+                    </div>
+                    <t t-foreach="data" t-as="line">
+                        <h2>
+                            <t t-if="data_len > 1">
+                                <t t-if="applied_on=='class' or not applied_on">Class</t>
+                                <t t-esc="line"/>
+                            </t>
+                        </h2>
+                        <table class="table table-bordered mt32">
+                            <thead>
+                                <tr>
+                                    <th name="th_leaves" class="text-left" t-if="applied_on!='student'">
+                                        <span>Students</span>
+                                    </th>
+                                    <th name="th_date_from" class="text-left">
+                                        <span>From</span>
+                                    </th>
+                                    <th name="th_date_to" class="text-left">
+                                        <span>To</span>
+                                    </th>
+                                    <th name="th_days" class="text-left">
+                                        <span>Days</span>
+                                    </th>
+                                    <th name="th_reason" class="text-left">
+                                        <span>Reason</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="data[line]" t-as="class">
+                                <tr>
+                                    <td t-if="applied_on!='student'">
+                                        <span t-esc="class['first_name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="class['start_date']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="class['end_date']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="class['total_days']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="class['reason']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

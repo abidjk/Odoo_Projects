@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_commission_form_view" model="ir.ui.view">
+        <field name="name">crm.commission.form.view</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="from_date"/>
+                            <field name="to_date"/>
+                            <field name="commission_type"/>
+                            <field name="revenue_wise_type" invisible="commission_type != 'revenue_wise'"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Commission Type">
+                            <group>
+                                <field name="product_wise_ids" nolabel="1"
+                                       invisible="commission_type != 'product_wise'"/>
+                                <field name="revenue_wise_ids" nolabel="1"
+                                       invisible="commission_type != 'revenue_wise'"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="crm_commission_search_view" model="ir.ui.view">
+        <field name="name">crm.commission.form.view</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+            <search string="Tests">
+                <field name="name"/>
+                <field name="commission_type"/>
+                <field name="active"/>
+                <filter string="Archived" name="active" domain="[('active', '=',False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="crm_commission_action" model="ir.actions.act_window">
+        <field name="name">CRM Commission</field>
+        <field name="res_model">crm.commission</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="flat_management_list_view" model="ir.ui.view">
+        <field name="name">flat.management.list.view</field>
+        <field name="model">flat.management</field>
+        <field name="arch" type="xml">
+            <list string="event list" editable="bottom">
+                <field name="name"/>
+                <field name="amount"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="flat_management_form_view" model="ir.ui.view">
+        <field name="name">flat.management.form.view</field>
+        <field name="model">flat.management</field>
+        <field name="arch" type="xml">
+            <form string="form_view">
+                <sheet>
+                    <group>
+                        <group>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="flat_management_action" model="ir.actions.act_window">
+        <field name="name">Flat</field>
+        <field name="res_model">flat.management</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

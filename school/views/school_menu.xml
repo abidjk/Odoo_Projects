@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="school_root_menu" name="School"/>
+    <menuitem id="school_students_menu" name="Students" parent="school_root_menu" sequence="1"/>
+    <menuitem id="school_students_club_menu" action="school_club_action" parent="school_root_menu" sequence="2"/>
+    <menuitem id="school_students_event_menu" action="school_event_action" parent="school_root_menu" sequence="3"/>
+    <menuitem id="school_students_registration_menu" action="school_students_action" parent="school_students_menu" groups="office_staff_group_manager"/>
+    <menuitem id="school_students_students_menu" action="school_reg_students_action" parent="school_students_menu"/>
+    <menuitem id="school_configuration_menu" name="Configuration" parent="school_root_menu" sequence="8" groups="office_staff_group_manager"/>
+    <menuitem id="school_department_menu" action="school_department_action" parent="school_configuration_menu"/>
+    <menuitem id="school_class_menu" action="school_class_action" parent="school_configuration_menu"/>
+    <menuitem id="school_subject_menu" action="school_subject_action" parent="school_configuration_menu"/>
+    <menuitem id="school_academic_menu" action="school_academic_action" parent="school_configuration_menu"/>
+    <menuitem id="school_employees_menu" name="Employees" parent="school_root_menu" sequence="4" groups="office_staff_group_manager"/>
+    <menuitem id="school_teachers_menu" action="school_teacher_action" parent="school_employees_menu"/>
+    <menuitem id="school_office_staff_menu" action="school_office_staff_action" parent="school_employees_menu"/>
+    <menuitem id="school_leave_menu" action="school_leave_action" parent="school_root_menu" sequence="5"/>
+    <menuitem id="school_exam_menu" action="school_exam_action" parent="school_root_menu" sequence="6"/>
+    <menuitem id="school_report_menu" name="Report" parent="school_root_menu" sequence="7" />
+    <menuitem id="school_report_leave_menu" action="leave_report_wizard_action" parent="school_report_menu"/>
+    <menuitem id="school_report_student_menu" action="student_report_wizard_action" parent="school_report_menu"/>
+
+</odoo>
