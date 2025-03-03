@@ -15,7 +15,6 @@ patch(PosOrderline.prototype, {
         };
     },
 });
-
 patch(Orderline, {
     props: {
         ...Orderline.props,

@@ -13,7 +13,7 @@
          </t>
         </xpath>
         <xpath expr="//t[@t-esc='line.price']" position="after">
-         <button type="button" class="close bg-danger" aria-label="Close" t-on-click="() => this.onClickRemove()">
+         <button type="button" class="close bg-danger" aria-label="Close" t-on-click.stop="() => this.removeOrderline(line)">
             <span aria-hidden="true">X</span>
         </button>
         </xpath>

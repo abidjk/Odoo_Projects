@@ -12,11 +12,3 @@
         </xpath>
     </t>
 </templates>
-
-<!--<templates id="product_details_product_screen" xml:space="preserve">-->
-<!--    <t t-name="product_details.productScreen" owl="1">-->
-<!--             <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="onClick">-->
-<!--                <span>Clear All</span>-->
-<!--             </button>-->
-<!--    </t>-->
-<!--</templates>-->
