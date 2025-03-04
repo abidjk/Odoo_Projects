@@ -1,5 +1,5 @@
 {
-    'name': 'Product Details',
+    'name': 'Pos Product Details',
     'version': '18.0.1.0.0',
     'application': True,
     'depends': [
@@ -10,7 +10,7 @@
         ],
     'assets': {
         'point_of_sale._assets_pos': [
-                    'product_details/static/src/**/*',
+                    'pos_product_details/static/src/**/*',
                 ],
         },
 }
