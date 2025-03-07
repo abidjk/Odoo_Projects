@@ -11,6 +11,5 @@
                      ])]"
         />
         <field name="redirect_form_view_id" ref="redirect_form"/>
-        <field name="multisafepay_api_key">aaaa</field>
     </record>
 </odoo>
