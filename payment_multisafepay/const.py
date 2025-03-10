@@ -47,7 +47,7 @@ SUPPORTED_CURRENCIES = [
     'ZAR'
 ]
 
-# The codes of the payment methods to activate when Mollie is activated.
+# The codes of the payment methods to activate when Multisafepay is activated.
 DEFAULT_PAYMENT_METHOD_CODES = {
     # Primary payment methods.
     'card',
@@ -57,6 +57,7 @@ DEFAULT_PAYMENT_METHOD_CODES = {
     'mastercard',
     'amex',
     'discover',
+    'multisafepay'
 }
 
 # Mapping of payment method codes to Mollie codes.

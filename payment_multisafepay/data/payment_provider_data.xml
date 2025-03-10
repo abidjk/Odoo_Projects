@@ -7,9 +7,10 @@
         <field name="code">multisafepay</field>
         <field name="payment_method_ids"
                eval="[Command.set([
-                         ref('payment.payment_method_card'),
+                         ref('payment_multisafepay.payment_method_multisafepay'),
                      ])]"
         />
+        <field name="multisafepay_api_key">7ab11a0bbf74ed055c1af0a4284c41fcd2f47f23</field>
         <field name="redirect_form_view_id" ref="redirect_form"/>
     </record>
 </odoo>
