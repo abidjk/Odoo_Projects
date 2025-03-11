@@ -42,7 +42,6 @@ patch(Orderline.prototype, {
    },
     removeOrderline(line){
         var order =  this.pos.get_order()
-        console.log(line)
         let order_line = order.lines.find(item => item.id == line.id)
         if (order_line){
             order.removeOrderline(order_line)

@@ -4,7 +4,7 @@ import pprint
 import requests
 from werkzeug import urls
 
-from odoo import _,fields, models, service
+from odoo import _,fields, models
 from odoo.addons.payment_multisafepay import const
 from odoo.exceptions import ValidationError
 
@@ -12,6 +12,7 @@ _logger = logging.getLogger(__name__)
 
 
 class PaymentProvider(models.Model):
+    """inheriting payment provider"""
     _inherit = 'payment.provider'
 
     code = fields.Selection(
@@ -25,27 +26,21 @@ class PaymentProvider(models.Model):
     def _get_supported_currencies(self):
         """ Override of `payment` to return the supported currencies. """
         supported_currencies = super()._get_supported_currencies()
-        print('hi')
         if self.code == 'multisafepay':
             supported_currencies = supported_currencies.filtered(
                 lambda c: c.name in const.SUPPORTED_CURRENCIES
             )
-        print(supported_currencies)
         return supported_currencies
 
     def _multisafepay_make_request(self, endpoint, data=None, method='POST'):
+        """ Make a request at multisafepay endpoint"""
         self.ensure_one()
         endpoint = f'/v1/json/{endpoint.strip("/")}'
         url = urls.url_join('https://testapi.multisafepay.com/', endpoint)
 
-        # odoo_version = service.common.exp_version()['server_version']
-        # module_version = self.env.ref('base.module_payment_multisafepay').installed_version
         headers = {
             "Accept": "application/json",
-            # "Authorization": f'Bearer {self.multisafepay_api_key}',
             "Content-Type": "application/json",
-            # See https://docs.mollie.com/integration-partners/user-agent-strings
-            # "User-Agent": f'Odoo/{odoo_version} MollieNativeOdoo/{module_version}',
         }
 
         try:
