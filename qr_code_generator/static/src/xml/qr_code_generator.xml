@@ -5,17 +5,27 @@
         <button>
             <i class="fa fa-qrcode" role="img" aria-label="Activities"></i>
         </button>
-        <t t-set-slot="content">
+           <t t-set-slot="content">
             <div>
                 <div class="" style="width: 18rem;" name="activityGroups">
+                    <t t-if="state.qrcode">
+                        <div>
+                            <img t-att-src="state.qrcode"/>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-sm" t-on-click="_downloadQR">
+                            Download
+                        </button>
+                        </div>
+                    </t>
                     <div>
-                        <input class="form-control" id="text_box"/>
+                        <input type="text" t-model="state.text" class="form-control" id="text_box"/>
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary btn-sm" t-on-click="_resetTextBox">
                             Reset
                         </button>
-                        <button type="button" class="btn btn-primary btn-sm">
+                        <button type="button" class="btn btn-primary btn-sm" t-on-click="_generateQr">
                             Generate
                         </button>
                     </div>
