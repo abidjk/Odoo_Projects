@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xml:space="preserve">
+    <t t-name="counter.counterClac">
+        <div class="">
+        <div>
+            Counter: <t t-esc="state.value"/>
+        </div>
+            <div>
+            <button
+                    class="btn btn-success btn-md"
+                    t-on-click="increment">+
+            </button>
+                <button
+                        class="btn btn-danger btn-md"
+                        t-on-click="decrement">-
+            </button>
+        </div>
+            <Reset onClick="()=>this.reset()"/>
+        </div>
+    </t>
+</template>

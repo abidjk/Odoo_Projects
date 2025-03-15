@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xml:space="preserve">
+    <t t-name="counter.ResetButton">
+            <div>
+                <button type="button" class="btn btn-primary btn-md" t-on-click="props.onClick">
+                            Reset
+                </button>
+        </div>
+    </t>
+</template>
